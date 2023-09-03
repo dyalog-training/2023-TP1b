@@ -16,4 +16,4 @@ jobs:
     - name: Run Dyalog APL in Docker
       run: |
         docker pull dyalog/dyalog:latest
-        docker run --rm -v "${PWD}:/workspace" dyalog/dyalog:latest -b -s LOAD=/workspace/src 1>&2 2>/dev/null
+        docker run --rm -e LOAD=/workspace/src -v "${PWD}:/workspace" dyalog/dyalog:latest -b -s 1>&2 2>/dev/null
