@@ -1,0 +1,4 @@
+test_assert←{
+    '1+1 should equal 2'⊢2 Assert 1+1:
+    ''
+ }

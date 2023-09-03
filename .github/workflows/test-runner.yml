@@ -1,0 +1,19 @@
+name: Run Dyalog APL Unit Tests
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  run-dyalog:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Dyalog APL in Docker
+      run: |
+        docker pull dyalog/dyalog:latest
+        docker run --rm -v "${PWD}:/workspace" dyalog/dyalog:latest -b -s LOAD=/workspace/src 1>&2 2>/dev/null
