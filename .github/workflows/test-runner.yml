@@ -19,6 +19,9 @@ jobs:
     - name: Build custom Docker image
       run: docker build -t dytest .
 
+    - name: Set permissions for /tests
+      run: chmod 777 tests
+      
     - name: Run Dyalog APL in Docker
       run: |
         docker run --rm \
