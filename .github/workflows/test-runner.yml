@@ -19,16 +19,14 @@ jobs:
     - name: Build custom Docker image
       run: docker build -t dytest .
 
+    # ]dtest requires write access to /tests
     - name: Set permissions for /tests
       run: chmod 777 tests
-      
-    - name: Run Dyalog APL in Docker
+
+    - name: Run unit tests
       run: |
         docker run --rm \
           -v "${{ github.workspace }}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" \
           -v "${{ github.workspace }}/src:/src" \
           -v "${{ github.workspace }}/tests:/tests" \
           dytest
-        if [ $? -ne 0 ]; then
-          exit 1
-        fi

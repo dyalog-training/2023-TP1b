@@ -2,9 +2,7 @@
 
 # Replacement for the default entrypoint script in the Dyalog docker image.
 # We know we have set the LOAD variable, so no need to check all possible
-# launch options. We also want to run the interpreter with -b -s and bin
-# any stderr output so we can return only the results from our tests when
-# running this as part of a GitHub Action.
+# launch options. We also want to run the interpreter with -b -s
 #
 # Note: the {{DYALOG_RELEASE}} template will be expanded by the docker build.
 
