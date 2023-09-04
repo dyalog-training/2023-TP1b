@@ -25,4 +25,4 @@ jobs:
           -v "${{ github.workspace }}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" \
           -v "${{ github.workspace }}/src:/src" \
           -v "${{ github.workspace }}/tests:/tests" \
-          dytest
+          dytest || exit 1
