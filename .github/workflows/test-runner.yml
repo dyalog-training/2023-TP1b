@@ -12,8 +12,17 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+        fetch-depth: 0
+
+    - name: Build custom Docker image
+      run: docker build -t dytest .
 
     - name: Run Dyalog APL in Docker
       run: |
-        docker pull dyalog/dyalog:latest
-        docker run --rm -e LOAD=/workspace/src -v "${PWD}:/workspace" dyalog/dyalog:latest -b -s 1>&2 2>/dev/null
+        docker run --rm \
+          -v "${{ github.workspace }}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" \
+          -v "${{ github.workspace }}/src:/src" \
+          -v "${{ github.workspace }}/tests:/tests" \
+          dytest

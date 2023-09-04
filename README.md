@@ -65,3 +65,15 @@ Some hoop-jumping there to get the right output sent to the shell.
 
 That command exits with a 0 if all went OK, and 11 otherwise.
 
+
+```
+docker build -t dytest .
+
+docker run --rm \
+  -v "$(pwd)/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" \
+  -v "$(pwd)/src:/src" \
+  -v "$(pwd)/tests:/tests" \
+  dytest
+
+```
+
