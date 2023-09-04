@@ -1,4 +1,4 @@
 test_mysum ← {
-    '1+1 should equal 2'⊢2 Assert 1 #.mysum 1:
+    '1+1 should equal 2'⊢3 Assert 1 #.mysum 1:
     ''
 }
