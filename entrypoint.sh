@@ -16,4 +16,5 @@ export APL_TEXTINAPLCORE=${APL_TEXTINAPLCORE-1}
 export TRACE_ON_ERROR=0
 export SESSION_FILE="${SESSION_FILE-$DYALOG/default.dse}"
 
-$DYALOG/dyalog -b -s ${WS} $@ 1>&2 2>/dev/null
+# $DYALOG/dyalog -b -s ${WS} $@ 1>&2 2>/dev/null
+$DYALOG/dyalog -b -s ${WS} $@
