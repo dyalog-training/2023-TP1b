@@ -10,7 +10,6 @@
 
 ## Run tests against actual code
 
-
     ]link.create|import # /Users/stefan/work/testws/src
 
 ```apl
@@ -76,4 +75,17 @@ docker run --rm \
   dytest
 
 ```
+
+On Windows PowerShell:
+
+    docker run --rm `
+    -v "${PWD}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" `
+    -v "${PWD}/src:/src" `
+    -v "${PWD}/tests:/tests" `
+    dytest
+
+On Windows Command Prompt:
+
+    docker run --rm -v "%cd%\DBuildTest\DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" -v "%cd%\src:/src" -v "%cd%\tests:/tests" dytest
+
 

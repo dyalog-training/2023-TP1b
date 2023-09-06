@@ -6,7 +6,7 @@ testdir ← 'tests',⍨⊃1⎕NPARTS'[/\\]$'⎕R''⊃dir
     ⎕←'No tests found'
     ⎕OFF 0
 :EndIf
-
+⎕PW ← 32767
 results ← ⎕SE.UCMD'DTest ',testdir, ' -quiet'
 :If 0=≢results
 
