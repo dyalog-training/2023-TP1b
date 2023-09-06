@@ -1,10 +1,6 @@
-# Use the dyalog/dyalog:dotnet base image
-# 
-# We won't be using any dotnet-specific aspects in the testing environment itself,
-# but code under test might want to use dotnet, and link will throw some warnings
-# we don't care about if it's not persent.
+# Use the dyalog/dyalog base image
 
-FROM dyalog/dyalog:dotnet
+FROM dyalog/dyalog
 
 ARG DYALOG_RELEASE=18.2
 
