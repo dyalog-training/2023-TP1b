@@ -65,11 +65,17 @@ Any push to the main branch of this repository should trigger the unit tests to 
 
 ## Link the code into your workspace
 
+Start Dyalog, and execute the following to link the source code into the session:
+
     ]link.create # {/path/to}/2023-TP1b/src
 
 Replace `{/path/to}` with the actual path to the `2023-TP1b` you cloned.
 
 ## Trigger the tests manually
+
+In the session, use the `]dtest` user command to run the tests. Note that the repository contains the latest version of DTest -- if you didn't install this earlier, place the file `{/path/to}/2023-TP1b/DBuildTest/DyalogBuild.dyalog` in your `MyUCMDs` folder. 
+
+Run the command:
 
     ]dtest {/path/to}/2023-TP1b/tests
 
