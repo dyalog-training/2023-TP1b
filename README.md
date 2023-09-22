@@ -49,7 +49,7 @@ Now let's get this repository into your own account, and then onto your computer
     * Git HTTPS: `git clone --recursive https://github.com/{YOUR-GITHUB-ACCOUNT}/2023-TP1b.git`
     * [GitHub Desktop](https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop)
 
-> :warning: **Note**: it's NOT sufficient to clone the workshop repository directly, it must be forked first. The reason for this is that in order to be able to trigger the GitHub Action, you need to be able to push to the remote repository, and if you clone it directly, you won't have sufficient credentials to push.
+> ℹ️ **Note**: it's NOT sufficient to clone the workshop repository directly, it must be forked first. The reason for this is that in order to be able to trigger the GitHub Action, you need to be able to push to the remote repository, and if you clone it directly, you won't have sufficient credentials to push.
 
 ## Repository contents
 
