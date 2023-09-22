@@ -45,9 +45,8 @@ Now let's get this repository into your own account, and then onto your computer
     * the [GitHub CLI](https://cli.github.com/): `gh repo fork dyalog-training/2023-TP1b`
 
 2. Clone your fork to your local machine, using one of the following methods:
-    * GitHub CLI: `gh repo clone {YOUR-GITHUB-ACCOUNT}/2023-TP1b`
-    * Git SSH: `git clone git@github.com:{YOUR-GITHUB-ACCOUNT}}/2023-TP1b.git`
-    * Git HTTPS: `git clone https://github.com/{YOUR-GITHUB-ACCOUNT}/2023-TP1b.git`
+    * Git SSH: `git clone --recursive git@github.com:{YOUR-GITHUB-ACCOUNT}}/2023-TP1b.git`
+    * Git HTTPS: `git clone --recursive https://github.com/{YOUR-GITHUB-ACCOUNT}/2023-TP1b.git`
     * [GitHub Desktop](https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop)
 
 ## Repository contents
@@ -82,14 +81,13 @@ The source directory contains a test runner that enables us to trigger the tests
 That command exits with a 0 if all went OK, and 11 otherwise.
 
 
-
-## Build the docker container
+## Build the Docker container
 
 ```
 docker build -t dytest .
 ```
 
-## Run the unit tests inside the docker container
+## Run the unit tests inside the Docker container
 
 Mac/Linux:
 ```
@@ -101,7 +99,6 @@ docker run --rm \
 ```
 
 In Windows PowerShell:
-
 ```
 docker run --rm `
   -v "${PWD}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" `
@@ -111,7 +108,6 @@ docker run --rm `
 ```
 
 Using the Windows Command Prompt:
-
 ```
 docker run --rm -v "%cd%\DBuildTest\DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" -v "%cd%\src:/src" -v "%cd%\tests:/tests" dytest
 ```
