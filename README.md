@@ -9,9 +9,16 @@ To make the most of this workshop, check that
 3. you have a [GitHub account](https://github.com/join) you can create repositories in
 4. you have [git installed](https://github.com/git-guides/install-git) on your computer
 
+If you're on a Mac, install the follwing shell alias to make it easier to run Dyalog from the command line:
+```sh
+alias dyalog="/Applications/Dyalog-18.2.app/Contents/Resources/Dyalog/mapl"
+```
+
+Place this in your shell's expected config file (`~/.bashrc` or `~/.bash_profile` if you use `bash` or `~/.zshrc` if you use `zsh`) and run `source {your-shell-config-file}`.
+
 These are the minimum requirements.
 
-Optionally, there are plenty of auxiliary tools that make working with `git` and `GitHub` more streamlined if you're not a fan of the `git` commandline. Some examples are:
+Optionally, there are plenty of auxiliary tools that make working with `git` and `GitHub` more streamlined if you're not a fan of the `git` command line. Some examples are:
 
 1. [GitHub CLI](https://cli.github.com/)
 2. [GitHub Desktop](https://docs.github.com/en/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop). 
@@ -59,12 +66,14 @@ Replace `{/path/to}` with the actual path to the `2023-TP1b` you cloned.
 
 ## Running tests from the command line
 
-The source directory contains a test runner that enable us to trigger the tests from the command line:
+The source directory contains a test runner that enables us to trigger the tests from the command line:
 
 ```
 % dyalog -b -s LOAD=src
 ```
 That command exits with a 0 if all went OK, and 11 otherwise.
+
+
 
 ## Build the docker container
 
