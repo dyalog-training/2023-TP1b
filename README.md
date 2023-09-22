@@ -1,5 +1,13 @@
 # Running Dyalog ]dtest in Docker and GitHub Actions
 
+## Workshop aims
+
+The aims of this workshop is to demonstrate how you can get your tests to run automatically for you 'in the clouds' using [Docker](https://www.docker.com/) and the [GitHub Actions](https://github.com/features/actions) [continous integration](https://en.wikipedia.org/wiki/Continuous_integration) (CI) framework. This means that every time you make a change and push this to the `main` branch of your repository, your tests will run, and the results will become visible in the GitHub web interface without any further actions from you.
+
+If you're not used to using GitHub to host your APL code, worry not -- we'll work it through together. Even if you prefer another source code revisioning system, or another CI framework (like [circle](https://circleci.com/) or [jenkins](https://www.jenkins.io/)), the broad strokes of the approach we'll cover here should hopefully still be relevant to you.
+
+GitHub Actions is free to use for public repositories, and private repositories get a limited, but generous, allocation of free minutes of runner time.
+
 ## Pre-requisites
 
 To make the most of this workshop, check that
