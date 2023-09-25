@@ -84,10 +84,22 @@ Run the command:
 The source directory contains a test runner that enables us to trigger the tests from the command line:
 
 ```
-% dyalog -b -s LOAD=src
+dyalog -b -s LOAD=src
 ```
 That command exits with a 0 if all went OK, and 11 otherwise.
 
+Try changing the file `src/mysum.aplf` to 
+```apl
+mysum ← {
+    ⍺-⍵
+}
+```
+and show that there is now a test failure. If all tests are still succeeding, this can be a symptom of not using the latest version of `]dtest` -- something in the fork+clone process went awry. Remove the `DBuildTest` directory, and re-clone the sub-module:
+
+```sh
+rm -rf DBuildTest
+git submodule update --init --recursive
+```
 
 ## Build the Docker container
 
@@ -119,4 +131,68 @@ Using the Windows Command Prompt:
 ```
 docker run --rm -v "%cd%\DBuildTest\DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" -v "%cd%\src:/src" -v "%cd%\tests:/tests" dytest
 ```
+
+If you see an error of the type:
+
+```
+/src does not define the function #.Run
+```
+then you most likely ran the container from the wrong directory: it must be run from the root of the checked-out repository.
+
+## Trouble-shooting: debugging the Docker container
+
+If you experience problems using the Docker container, you can request shell access and examine it manually. Debugging a Docker container can sometimes feel like a dark art. With this container, you can try the following:
+
+In the root of the repository, run the following command to bypass the set entry point to gain shell access (Mac/Linux):
+```
+docker run --rm --entrypoint /bin/sh \
+  -v "$(pwd)/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" \
+  -v "$(pwd)/src:/src" \
+  -v "$(pwd)/tests:/tests" \
+  -it dytest
+```
+In Windows PowerShell:
+```
+docker run --rm --entrypoint /bin/sh `
+  -v "${PWD}/DBuildTest/DyalogBuild.dyalog:/home/dyalog/MyUCMDs/DyalogBuild.dyalog" `
+  -v "${PWD}/src:/src" `
+  -v "${PWD}/tests:/tests" `
+  -it dytest
+```
+Start with verifying that the mapped files look as they should. Look in the `/src` and `/tests` folders and check that their contents match those of the repository's matching folders. Check that `/home/dyalog/MyUCMDs` contains the file `DBuildTest.dyalog`. Check that the latter is indeed a file containing APL code, and not a directory (a sign that the submodule wasn't correctly cloned).
+
+If that all looks good, let's ensure we can run dyalog manually in interactive mode. For this we need to adjust a couple of environment variables. Execute the following statements:
+
+```sh
+export DYALOG=/opt/mdyalog/18.2/64/unicode/
+export LD_LIBRARY_PATH="${DYALOG}:${LD_LIBRARY_PATH}"
+export WSPATH=$WSPATH:${DYALOG}/ws
+export TERM=xterm-256color
+export APL_TEXTINAPLCORE=${APL_TEXTINAPLCORE-1}
+export TRACE_ON_ERROR=0
+export SESSION_FILE="${SESSION_FILE-$DYALOG/default.dse}"
+```
+
+Now see what happens if you try to run the tests from the command-line (inside the container):
+
+```sh
+dyalog -b -s /src
+```
+If that does not yield the behaviour you expect, unset the `LOAD` environment variable:
+```sh
+unset LOAD
+```
+and start Dyalog interactively:
+```sh
+dyalog
+```
+Now link the source code:
+```
+]link.create # /src
+```
+and try running `]dtest`:
+```
+]dtest /tests
+```
+
 
