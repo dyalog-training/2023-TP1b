@@ -164,6 +164,7 @@ Start with verifying that the mapped files look as they should. Look in the `/sr
 If that all looks good, let's ensure we can run dyalog manually in interactive mode. For this we need to adjust a couple of environment variables. Execute the following statements:
 
 ```sh
+unset LOAD
 export DYALOG=/opt/mdyalog/18.2/64/unicode/
 export LD_LIBRARY_PATH="${DYALOG}:${LD_LIBRARY_PATH}"
 export WSPATH=$WSPATH:${DYALOG}/ws
@@ -176,17 +177,13 @@ export SESSION_FILE="${SESSION_FILE-$DYALOG/default.dse}"
 Now see what happens if you try to run the tests from the command-line (inside the container):
 
 ```sh
-dyalog -b -s /src
+dyalog -b -s LOAD=/src
 ```
-If that does not yield the behaviour you expect, unset the `LOAD` environment variable:
-```sh
-unset LOAD
-```
-and start Dyalog interactively:
+If that does not yield the behaviour you expect, start Dyalog interactively:
 ```sh
 dyalog
 ```
-Now link the source code:
+Link the source code:
 ```
 ]link.create # /src
 ```
