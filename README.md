@@ -139,6 +139,41 @@ If you see an error of the type:
 ```
 then you most likely ran the container from the wrong directory: it must be run from the root of the checked-out repository.
 
+## Git cheat sheet
+
+If you're new to `git`, it can seem daunting. However, it's worth the time investment to learn it, given its ubiquity. Here are some common incantations to use on the command line. For a more in-depth introduction, see GitHub's [git guide](https://github.com/git-guides).
+
+**Clone a repository**
+
+```
+git clone [--recursive] [git@github.com:{ACCT}/{REPO}.git | https://github.com/{ACCT}/{REPO}.git]
+```
+
+**Stage, and commit modified (and deleted) files**
+```
+git commit -a -m 'Your well-formed commit message here'
+```
+
+**Push branch to remote**
+```
+git push origin {branch-name}
+```
+
+**Make a new local branch, and switch to it**
+```
+git checkout -b {my-new-branch-name}
+```
+
+**Switch to other local branch**
+```
+git switch {branch-name}
+```
+
+**Pull all remote changes in main branch**
+```
+git pull origin main [--ff-only]
+```
+
 ## Trouble-shooting: debugging the Docker container
 
 If you experience problems using the Docker container, you can request shell access and examine it manually. Debugging a Docker container can sometimes feel like a dark art. With this container, you can try the following:
