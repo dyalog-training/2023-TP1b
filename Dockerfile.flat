@@ -1,0 +1,28 @@
+# This version does away with the entrypoint script.
+# If you're on Windows, and you have trouble using the
+# main Dockerfile, you can try this instead.
+
+FROM dyalog/dyalog
+
+ENV DYALOG /opt/mdyalog/18.2/64/unicode/ 
+ENV LD_LIBRARY_PATH ${DYALOG}:${LD_LIBRARY_PATH}
+ENV WSPATH ${WSPATH}:${DYALOG}/ws
+ENV TERM dumb
+ENV APL_TEXTINAPLCORE 1 
+ENV TRACE_ON_ERROR 0
+ENV SESSION_FILE ${DYALOG}/default.dse
+
+ENV LOAD "/src"
+
+# Switch to root to perform directory operations
+USER root
+RUN mkdir -p /home/dyalog/MyUCMDs
+RUN chmod 777 /home/dyalog/MyUCMDs && chown dyalog:dyalog /home/dyalog/MyUCMDs
+RUN mkdir /src /tests
+RUN chown dyalog:dyalog /src /tests
+
+# Switch back to dyalog user
+USER dyalog
+
+# Set the entry point
+ENTRYPOINT ["/opt/mdyalog/18.2/64/unicode/dyalog", "-b", "-s"]
