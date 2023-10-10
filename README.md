@@ -15,7 +15,8 @@ To make the most of this workshop, check that
 1. you have [Docker desktop](https://www.docker.com/products/docker-desktop/) installed
 2. you have [Dyalog APL v18.2](https://www.dyalog.com/download-zone.htm) installed
 3. you have a [GitHub account](https://github.com/join) you can create repositories in
-4. you have [git installed](https://github.com/git-guides/install-git) on your computer
+4. you either have [git installed](https://github.com/git-guides/install-git) on your computer, or
+5. ..if you're a Windows user, consider installing [GitHub Desktop](https://desktop.github.com/)
 
 If you're on a Mac, install the follwing shell alias to make it easier to run Dyalog from the command line:
 ```sh
