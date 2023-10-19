@@ -45,7 +45,7 @@ Now let's get this repository into your own account, and then onto your computer
     * the [GitHub web interface](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository), or
     * the [GitHub CLI](https://cli.github.com/): `gh repo fork dyalog-training/2023-TP1b`
 
-2. Clone your fork to your local machine, using one of the following methods, noting the `--recusive` switch to ensure we also clone submodules:
+2. Clone your fork to your local machine, using one of the following methods, noting the `--recursive` switch to ensure we also clone submodules:
     * Git SSH: `git clone --recursive git@github.com:{YOUR-GITHUB-ACCOUNT}/2023-TP1b.git`
     * Git HTTPS: `git clone --recursive https://github.com/{YOUR-GITHUB-ACCOUNT}/2023-TP1b.git`
     * [GitHub Desktop](https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop)
